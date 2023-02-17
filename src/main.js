@@ -3,10 +3,8 @@ import Vue from 'vue'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
-// 改造之后的element-ui样式
-import './styles/element-variables.scss'
 import 'element-ui/lib/theme-chalk/index.css'
-import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
+import locale from "element-ui/lib/locale/lang/zh-CN"; // lang i18n
 
 import '@/styles/index.scss' // global css
 
@@ -18,11 +16,12 @@ import store from './store'
 import router from './router'
 
 // 全局注册filters
-import * as filters from './filters' // global filters
+import * as filters from "./filters"; // global filters
 // register global utility filters
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+  Vue.filter(key, filters[key]);
+});
+
 
 // 全局注册svg-icon
 import '@/icons' // icon
@@ -34,6 +33,7 @@ import '@/icons' // icon
 // import echarts from 'echarts'
 // Vue.prototype.$echarts = echarts
 
+
 // set ElementUI lang to zh-CN
 Vue.use(ElementUI, { locale })
 
@@ -43,6 +43,8 @@ Vue.config.productionTip = false
 // import CustomComponents from '@/components/CustomComponents/index'
 // // 以插件的方式注册进去
 // Vue.use(CustomComponents)
+
+
 
 new Vue({
   el: '#app',
