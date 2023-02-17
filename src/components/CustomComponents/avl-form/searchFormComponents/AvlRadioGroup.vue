@@ -1,46 +1,36 @@
 <template>
   <div class="at-form-component" :class="configData.className||''">
-    <el-radio-group v-model="searchVal" v-bind="propAttrs" :size="configData.size||''" @change="handleSearch">
+    <el-radio-group v-bind="propAttrs" v-model="searchVal" @change="handleSearch" :size="configData.size||''">
       <template v-if="configData.showBtnStyle">
-        <el-radio-button
-          v-for="item in options"
-          :key="item.value"
-          :disabled="item.disabled"
-          :label="item.value"
-          :border="configData.showBorder"
-        >{{ item.label }}</el-radio-button>
+        <el-radio-button v-for="item in options" :disabled="item.disabled" :key="item.value"
+          :label="item.value" :border="configData.showBorder">{{item.label}}</el-radio-button>
       </template>
       <template v-else>
-        <el-radio
-          v-for="item in options"
-          :key="item.value"
-          :disabled="item.disabled"
-          :label="item.value"
-          :border="configData.showBorder"
-        >{{ item.label }}</el-radio>
+        <el-radio v-for="item in options" :disabled="item.disabled" :key="item.value"
+          :label="item.value" :border="configData.showBorder">{{item.label}}</el-radio>
       </template>
     </el-radio-group>
   </div>
 </template>
 
 <script>
-import minxi from './mixin'
+import minxi from "./mixin";
 export default {
-  mixins: [minxi],
   data() {
     return {
       options: this.configData.defaultOptions || []
-    }
+    };
   },
+  mixins: [minxi],
   computed: {
     propAttrs() {
       if (this.configData.showBtnStyle && this.configData.btnStyle) {
         return {
-          'text-color': this.configData.btnStyle.textColor || 'ffffff',
-          fill: this.configData.btnStyle.fill || '#409EFF'
-        }
+          "text-color": this.configData.btnStyle.textColor || "ffffff",
+          fill: this.configData.btnStyle.fill || "#409EFF"
+        };
       } else {
-        return {}
+        return {};
       }
     }
   },
@@ -50,8 +40,8 @@ export default {
       !this.configData.defaultOptions ||
       this.configData.defaultOptions.length === 0
     ) {
-      this.options = await this.configData.getInitData()
+      this.options = await this.configData.getInitData();
     }
   }
-}
+};
 </script>
